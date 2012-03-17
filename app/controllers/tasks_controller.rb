@@ -11,6 +11,13 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @task = Task.new
 
+    #Catch all the done tasks
+    @donetasks = Task.find_all_by_status("done")
+    #Cath all the notdone tasks
+    @notdonetasks = Task.find_all_by_status("notdone")
+    #Catch all the doing tasks
+    @doingtasks = Task.find_all_by_status("doing")
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
@@ -54,7 +61,7 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
 
     respond_to do |format|
-      @task.status = "undone"
+      @task.status = "notdone"
       if @task.save
         format.html { redirect_to(tasks_url) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
@@ -111,14 +118,14 @@ class TasksController < ApplicationController
   end
   
   # Action that update all the selected tasks
-  # [:task_ids] are the IDS of the selected tasks
-  # It concatenate the string "(Done)" in the end of the task.name and update the task.status to "done"
+  # [:task_ids] is the array of IDS of the selected tasks
+  # It update the task.status to "done"
 
   def mark_as_done
     if ! params[:task_ids].nil?
       @tasks = Task.find(params[:task_ids])
       @tasks.each do |task|
-       task.name = task.name+" (Done)"
+       #task.name = task.name+" (Done)"
        task.status = "done"
        task.update_attributes(params[:task]) 
       end  
@@ -126,11 +133,29 @@ class TasksController < ApplicationController
     redirect_to(tasks_url)  
   end
 
+  # Action that update all the selected tasks
+  # [:task_ids] is the array of IDS of the selected tasks
+  # It update the task.status to "doing"
+
+  def mark_as_doing
+    if ! params[:task_ids].nil?
+      @tasks = Task.find(params[:task_ids])
+      @tasks.each do |task|
+       #task.name = task.name+" (Doing)"
+       task.status = "doing"
+       task.update_attributes(params[:task]) 
+      end  
+    end 
+    redirect_to(tasks_url)  
+  end
+
+
   # Action that identify the choosen button in the View and calls the respective action method
 
   def form_action  
       case params[:commit]
          when "Mark selected as done": mark_as_done
+         when "Mark selected as doing": mark_as_doing 
          when "Delete selected": delete_selected 
       end  
   end

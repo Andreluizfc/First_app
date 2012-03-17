@@ -4,18 +4,33 @@
 
 <h1>My Tasks</h1>
 
-<% form_tag :action => 'form_action', :remote => true do %>
-<% for task in @tasks %>
-   <% if task.status == "done" %>  
-      <%= check_box_tag 'task_ids[]', task.id, true, :disabled => true%> <%= task.name %>
-      <br/>
-     <% else %>
-      <%= check_box_tag 'task_ids[]', task.id, false, :disabled => false%> <%= task.name %>
-      <br/>
-   <% end %> 
+<h2> Done Tasks: </h2>
+
+<% for task in @donetasks %> 
+   <%= check_box_tag 'task_ids[]', task.id, true, :disabled => true %> <%= task.name+' (Done)' %>
+   <br/> 
 <% end %>
+
+
+<% form_tag :action => 'form_action', :remote => true do %>
+  
+  <h2> Doing Tasks: </h2>
+
+  <% for task in @doingtasks %>  
+        <%= check_box_tag 'task_ids[]', task.id, false, :disabled => false %> <%= task.name+' (Doing)' %>
+        <br/>
+  <% end %>
+ 
+  <h2> Not done Tasks: </h2>
+
+  <% for task in @notdonetasks %>  
+        <%= check_box_tag 'task_ids[]', task.id, false, :disabled => false %> <%= task.name %>
+        <br/>
+  <% end %>
+
 <br/>
   
-<%= submit_tag ("Mark selected as done"), :confirm => 'Mark selected tasks as done?'%>  
+<%= submit_tag ("Mark selected as done"), :confirm => 'Mark selected tasks as done?'%>
+<%= submit_tag ("Mark selected as doing"), :confirm => 'Mark selected tasks as doing?'%>  
 <%= submit_tag ("Delete selected"), :confirm => 'Delete selected tasks?'%> 
 <% end %>  
