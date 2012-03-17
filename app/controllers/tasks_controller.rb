@@ -100,15 +100,14 @@ class TasksController < ApplicationController
   # Action that delete all the selected tasks
   # [:task_ids] are the IDS of the selected tasks
 
-  def delete_selected
-
-    @tasks = Task.find(params[:task_ids])
-    @tasks.each do |task|
-     task.destroy 
-    end    
-    
-    redirect_to(tasks_url)
- 
+  def delete_selected  
+    if ! params[:task_ids].nil?
+      @tasks = Task.find(params[:task_ids])
+      @tasks.each do |task|
+        task.destroy
+      end 
+    end      
+    redirect_to(tasks_url) 
   end
   
   # Action that update all the selected tasks
@@ -116,15 +115,15 @@ class TasksController < ApplicationController
   # It concatenate the string "(Done)" in the end of the task.name and update the task.status to "done"
 
   def mark_as_done
-    @tasks = Task.find(params[:task_ids])
-    @tasks.each do |task|
-     task.name = task.name+" (Done)"
-     task.status = "done"
-     task.update_attributes(params[:task]) 
-    end  
- 
+    if ! params[:task_ids].nil?
+      @tasks = Task.find(params[:task_ids])
+      @tasks.each do |task|
+       task.name = task.name+" (Done)"
+       task.status = "done"
+       task.update_attributes(params[:task]) 
+      end  
+    end 
     redirect_to(tasks_url)  
-
   end
 
   # Action that identify the choosen button in the View and calls the respective action method
