@@ -10,4 +10,18 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  #
+  # These helper methods were created for better undestanding of the "assert x.valid?". It's 
+  # more intuitive this way
+  # 
+  
+  def deny(condition, message='')
+    assert !condition, message
+  end
+
+  def assert_invalid(record, message='')
+    deny record.valid?, message
+  end
+
 end

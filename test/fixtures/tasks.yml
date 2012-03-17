@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  status: MyString
+test1:
+  name: Test1
+  status: undone
 
-two:
-  name: MyString
-  status: MyString
+test2:
+  name: Test2
+  status: undone

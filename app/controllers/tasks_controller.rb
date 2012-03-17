@@ -1,6 +1,12 @@
 class TasksController < ApplicationController
+
+  #User must authenticate before do any action
+  
+  before_filter :auth, :except => []
+
   # GET /tasks
   # GET /tasks.xml
+
   def index
     @tasks = Task.all
     @task = Task.new
@@ -91,36 +97,37 @@ class TasksController < ApplicationController
     end
   end
 
+  # Action that delete all the selected tasks
+  # [:task_ids] are the IDS of the selected tasks
+
   def delete_selected
-    i = 0
-    arr_item = Array.new
+
     @tasks = Task.find(params[:task_ids])
     @tasks.each do |task|
      task.destroy 
-     arr_item[i] = task.name
-     i += 1
-    end
-    @task_name = arr_item*', '
-      
-       redirect_to(tasks_url)
+    end    
+    
+    redirect_to(tasks_url)
  
   end
   
+  # Action that update all the selected tasks
+  # [:task_ids] are the IDS of the selected tasks
+  # It concatenate the string "(Done)" in the end of the task.name and update the task.status to "done"
+
   def mark_as_done
-    i = 0
-    arr_item = Array.new
     @tasks = Task.find(params[:task_ids])
     @tasks.each do |task|
      task.name = task.name+" (Done)"
      task.status = "done"
      task.update_attributes(params[:task]) 
-     arr_item[i] = task.name
-     i += 1
-    end
-    @task_name = arr_item*', '  
+    end  
  
     redirect_to(tasks_url)  
+
   end
+
+  # Action that identify the choosen button in the View and calls the respective action method
 
   def form_action  
       case params[:commit]

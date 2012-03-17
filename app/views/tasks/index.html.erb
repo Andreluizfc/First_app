@@ -4,7 +4,7 @@
 
 <h1>My Tasks</h1>
 
-<% form_tag :action => 'form_action' do %>
+<% form_tag :action => 'form_action', :remote => true do %>
 <% for task in @tasks %>
    <% if task.status == "done" %>  
       <%= check_box_tag 'task_ids[]', task.id, true, :disabled => true%> <%= task.name %>
