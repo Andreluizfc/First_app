@@ -1,0 +1,20 @@
+<h1>New Task</h1>
+
+<%= render 'form' %>
+
+<h1>My Tasks</h1>
+
+<% form_tag :action => 'form_action' do %>
+<% for task in @tasks %>
+   <% if task.status == "done" %>  
+      <%= check_box_tag 'task_ids[]', task.id, true, :disabled => true%> <%= task.name %>
+      <br/>
+     <% else %>
+      <%= check_box_tag 'task_ids[]', task.id, false, :disabled => false%> <%= task.name %>
+      <br/>
+   <% end %> 
+<% end %>
+<br/>  
+<%= submit_tag ("Mark selected as done"), :confirm => 'Mark selected tasks as done?'%>  
+<%= submit_tag ("Delete selected"), :confirm => 'Delete selected tasks?'%>  
+<% end %>  
