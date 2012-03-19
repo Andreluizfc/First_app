@@ -1,5 +1,15 @@
-<h1>New task</h1>
+<html> 
+  <head>
+    <%= stylesheet_link_tag "tasks_style" %>
+  </head>
+  <body>
+    <div id="great_div">  
+      <h1>New Task</h1>
+      <%= render 'form' %>
+      </br>
+      <%= link_to 'Back', tasks_path %>
+    </div>
+  </body>
+</html>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', tasks_path %>
+  

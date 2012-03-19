@@ -27,18 +27,6 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.xml
 
-  def show
-    @task = Task.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @task }
-    end
-  end
-
-  # GET /tasks/new
-  # GET /tasks/new.xml
-
   def new
     @task = Task.new
 
@@ -46,12 +34,6 @@ class TasksController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @task }
     end
-  end
-
-  # GET /tasks/1/edit
-
-  def edit
-    @task = Task.find(params[:id]) 
   end
 
   # POST /tasks
@@ -75,36 +57,8 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.xml
 
-  def update
-    @task = Task.find(params[:id])
- 
-    respond_to do |format|
-      @task.status = "done"
-      if @task.update_attributes(params[:task])
-         
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.xml
-
-  def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(tasks_url) }
-      format.xml  { head :ok }
-    end
-  end
-
-  # Action that delete all the selected tasks
+  # Delete all the selected tasks
   # [:task_ids] are the IDS of the selected tasks
 
   def delete_selected  
@@ -117,9 +71,9 @@ class TasksController < ApplicationController
     redirect_to(tasks_url) 
   end
   
-  # Action that update all the selected tasks
+  # Update all the selected tasks
   # [:task_ids] is the array of IDS of the selected tasks
-  # It update the task.status to "done"
+  # It updates the task.status to "done"
 
   def mark_as_done
     if ! params[:task_ids].nil?
@@ -133,19 +87,31 @@ class TasksController < ApplicationController
     redirect_to(tasks_url)  
   end
 
-  # Action that update all the selected tasks
+  # Update all the selected tasks
   # [:task_ids] is the array of IDS of the selected tasks
-  # It update the task.status to "doing"
+  # It updates the task.status to "doing"
 
   def mark_as_doing
     if ! params[:task_ids].nil?
       @tasks = Task.find(params[:task_ids])
       @tasks.each do |task|
-       #task.name = task.name+" (Doing)"
        task.status = "doing"
        task.update_attributes(params[:task]) 
       end  
     end 
+    redirect_to(tasks_url)  
+  end
+
+  # Delete all the done tasks
+  # Made this to delete old tasks if they become too many
+
+  def delete_done
+    @tasks = Task.find_all_by_status("done")
+    if ! @tasks.nil?
+      @tasks.each do |task|
+        task.destroy 
+      end
+    end  
     redirect_to(tasks_url)  
   end
 
@@ -156,7 +122,8 @@ class TasksController < ApplicationController
       case params[:commit]
          when "Mark selected as done": mark_as_done
          when "Mark selected as doing": mark_as_doing 
-         when "Delete selected": delete_selected 
+         when "Delete selected": delete_selected
+         when "Clear done tasks": delete_done 
       end  
   end
 

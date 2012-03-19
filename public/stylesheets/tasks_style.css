@@ -1,6 +1,6 @@
 body{
   margin:0;
-  background-color:#0099CC;
+  background-color:#0595d5;
 }
 
 a{
@@ -24,7 +24,7 @@ a.enter_button {
   text-align:center;
   width:50px;
   color:#fff;
-  background:#0099FF;
+  background:#0595d5;
   font-size:15px;
   font-weight:bold;
   padding:10px;
@@ -42,10 +42,11 @@ a.enter_button {
 a.enter_button:hover{
   text-decoration:none;
   color:#fff;
-  background:#0066FF;
+  background:#00BD42;
 }
 
 #header{
+  z-index:1;
   position:fixed;
   top:0;
   height:40px;
@@ -62,12 +63,13 @@ a.enter_button:hover{
   font-family: Impact, Charcoal, sans-serif;
   background-color:#fff;
   top:120px;
-  position:absolute;
-  width:500px;
+  position:relative;
+  width:510px;
   left:50%;
   margin-left:-250px;
   margin-top:30px;
-  padding-left:30px;
+  margin-bottom:200px;
+  padding-left:20px;
   padding-bottom:20px; 
   padding-top:30px;
 
@@ -90,6 +92,7 @@ a.enter_button:hover{
   left:50%;
   margin-left:-250px;
   padding-left:30px;
+  padding-left:30px;	
   padding-bottom:10px; 
   padding-top:10px;
   display: inline-block;
@@ -106,6 +109,7 @@ a.enter_button:hover{
 
 #footer2 {
   font-family: Impact, Charcoal, sans-serif;
+  color:#fff;
   position:absolute;
   top:390px;
   width:475px;
@@ -119,7 +123,7 @@ a.enter_button:hover{
 
 #footer3 {
   position:absolute;
-  top:390px;
+  top:400px;
   width:530px;
   text-align:right;
   left:50%;
@@ -127,6 +131,29 @@ a.enter_button:hover{
 
 }
 
+#social {
+  position:absolute;
+  top:390px;
+  width:475px;
+  text-align:left;
+  left:50%;
+  margin-left:-250px;
+  padding-top:10px;
+  font-size: 15px;
+ 
+}
+
+#social {
+  position:absolute;
+  top:390px;
+  width:475px;
+  text-align:left;
+  left:50%;
+  margin-left:-250px;
+  padding-top:10px;
+  font-size: 15px;
+ 
+}
 
 
 

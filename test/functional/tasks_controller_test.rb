@@ -24,26 +24,6 @@ class TasksControllerTest < ActionController::TestCase
     assert_redirected_to task_path(assigns(:task))
   end
 
-  test "should show task" do
-    get :show, :id => @task.to_param
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, :id => @task.to_param
-    assert_response :success
-  end
-
-  test "should update task" do
-    put :update, :id => @task.to_param, :task => @task.attributes
-    assert_redirected_to task_path(assigns(:task))
-  end
-
-  test "should destroy task" do
-    assert_difference('Task.count', -1) do
-      delete :destroy, :id => @task.to_param
-    end
-
     assert_redirected_to tasks_path
   end
 end

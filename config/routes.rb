@@ -1,6 +1,6 @@
 Blog::Application.routes.draw do
   resources :tasks
-
+  
   get "home/index"
  
   # The priority is based upon order of creation:
@@ -10,9 +10,7 @@ Blog::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
    
-  match '/tasks/delete_selected', :controller => 'tasks', :action => 'delete_selected'
   match '/tasks/form_action', :controller => 'tasks', :action => 'form_action'
-  match '/tasks/mark_as_done', :controller => 'tasks', :action => 'mark_as_done'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
