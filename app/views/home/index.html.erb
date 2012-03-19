@@ -1,7 +1,40 @@
-<head>
- 
- <h1>My todo list app</h1>
- </br>
- <h2>Use the link below to go to the tasks page</h2>
- 
- <%= link_to "My tasks", tasks_path %>
+<html>
+  <head>
+    <%= stylesheet_link_tag "tasks_style" %>
+  </head>
+  <body>
+
+    <div id="header">
+    </div>
+
+    <div id="great_div">
+      
+      <h1>Welcome to Easy Task</h1>
+      Use the button below to Enter the Site
+      </br>
+      </br>
+      <%= link_to "Enter", 'tasks', :class => "enter_button" %>
+
+    </div>
+   
+    <div id="footer">
+  
+    <%= link_to "About", 'about'%>
+    <%= link_to "Contact", 'contact'%>
+
+    </div>
+
+    <div id="footer2">
+  
+      Powered By:
+
+    </div>
+  
+    <div id="footer3">
+
+      <%= link_to(image_tag("/images/rails.png", :alt => "Promo Image"), "http://www.rubyonrails.org") %>
+
+    </div>    
+
+  </body>
+</html>

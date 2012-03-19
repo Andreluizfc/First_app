@@ -2,6 +2,7 @@ Hi people, this is my first app using RoR, it's basicaly a task manager tool. So
 
 - You can add new tasks (things to do, like study, clean the room, do the dishes, etc) 
 - Update the tasks when done (select the task you want to mark as done)
+- Update the tasks when you start doing them (select the task you want to mark as doing)
 - Delete the selected tasks
 
 And it's just this =)
