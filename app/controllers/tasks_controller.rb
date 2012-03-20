@@ -130,10 +130,10 @@ class TasksController < ApplicationController
 
   def form_action  
       case params[:commit]
-         when "Mark selected as done": mark_as_done
-         when "Mark selected as doing": mark_as_doing 
-         when "Delete selected": delete_selected
-         when "Clear done tasks": delete_done 
+         when "Mark selected as done": mark_as_done;
+         when "Mark selected as doing": mark_as_doing; 
+         when "Delete selected": delete_selected;
+         when "Clear done tasks": delete_done;
       end  
   end
 
