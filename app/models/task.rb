@@ -3,6 +3,6 @@ class Task < ActiveRecord::Base
                    :length => { :maximum => 20 }, 
                    :format => { :with => /^[a-zA-Z\s]*$/ }
 
-   validates :status, :format => { :with => /^[a-zA-Z\s]*$/ }
+  validates :status, :format => { :with => /^[a-zA-Z\s]*$/ }
 
 end

@@ -28,19 +28,31 @@ class TaskTest < ActiveSupport::TestCase
     assert_invalid task, "Task shouldn't be created"
   end
 
+  #Tests if the name is ok
+  test "name_ok" do
+    task = create(:name => 'John')
+    assert task.valid?, "Task should be created"
+  end
+
   #Tests if the status is not String
   test "status_not_strng" do
     task = create(:status => 123)
     assert task.errors.invalid?(:status), ":status is not string"
     assert_invalid task, "Task shouldn't be created"
   end
+
+  #Tests if the status is ok
+  test "status_ok" do
+    task = create(:name => 'notdone')
+    assert task.valid?, "Task should be created"
+  end
   
   #Method that create tasks for testing
   private
     def create(options={})
       Task.create({
-        :name => "Unit test",
-        :status => "undone"
+        :name => "",
+        :status => ""
         }.merge(options))
     end
 
