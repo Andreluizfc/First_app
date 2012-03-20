@@ -129,12 +129,18 @@ class TasksController < ApplicationController
   # Action that identify the choosen button in the View and calls the respective action method
 
   def form_action  
-      case params[:commit]
-         when "Mark selected as done": mark_as_done;
-         when "Mark selected as doing": mark_as_doing; 
-         when "Delete selected": delete_selected;
-         when "Clear done tasks": delete_done;
-      end  
+      if params[:commit] == "Mark selected as done"
+        mark_as_done
+      end
+      if params[:commit] == "Mark selected as doing"
+        mark_as_doing
+      end
+      if params[:commit] == "Delete selected"
+        delete_selected
+      end
+      if params[:commit] == "Clear done tasks"
+        delete_done
+      end
   end
 
 
