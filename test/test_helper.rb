@@ -11,14 +11,17 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   
-  #
-  # These helper methods were created for better undestanding of the "assert x.valid?". It's 
-  # more intuitive this way
-  # 
   
+  # These helper methods were created for better undestanding of the "assert !x.valid?". It's 
+  # more intuitive this way
+  
+  # This method negates the assert method
+
   def deny(condition, message='')
     assert !condition, message
-  end
+  end  
+
+  # This method abstracts the sentence .valid?
 
   def assert_invalid(record, message='')
     deny record.valid?, message

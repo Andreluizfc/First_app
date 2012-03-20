@@ -27,6 +27,17 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.xml
 
+  def show
+    @task = Task.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @task }
+    end
+  end  
+
+  # GET /tasks/1
+  # GET /tasks/1.xml
+
   def new
     @task = Task.new
 
@@ -114,7 +125,6 @@ class TasksController < ApplicationController
     end  
     redirect_to(tasks_url)  
   end
-
 
   # Action that identify the choosen button in the View and calls the respective action method
 

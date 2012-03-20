@@ -19,21 +19,20 @@ class TaskTest < ActiveSupport::TestCase
     task = create(:name => 'This task has a name too long')
     assert task.errors.invalid?(:name), ":name too long"
     assert_invalid task, "Task shouldn't be created"
-
   end
 
   #Tests if the name is not String
   test "name_not_string" do
-    task = create(:name => 200)
+    task = create(:name => 123)
     assert task.errors.invalid?(:name), ":name is not string"
     assert_invalid task, "Task shouldn't be created"
+  end
 
   #Tests if the status is not String
   test "status_not_strng" do
-    task = create(:status => 200)
+    task = create(:status => 123)
     assert task.errors.invalid?(:status), ":status is not string"
     assert_invalid task, "Task shouldn't be created"
-
   end
   
   #Method that create tasks for testing

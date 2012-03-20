@@ -24,6 +24,9 @@ class TasksControllerTest < ActionController::TestCase
     assert_redirected_to task_path(assigns(:task))
   end
 
-    assert_redirected_to tasks_path
+  test "should show task" do
+    get :show, :id => @task.to_param
+    assert_response :success
   end
+
 end

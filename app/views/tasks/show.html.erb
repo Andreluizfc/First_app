@@ -1,16 +1,23 @@
-<p id="notice"><%= notice %></p>
+<html>
+  <head>
+    <%= stylesheet_link_tag "tasks_style" %>
+  </head>
+  <body>
+    <div id="header">
+    </div>
+    <div id="great_div">
+      <p id="notice"><%= notice %></p>
+      <p>
+        <b>Name:</b>
+        <%= @task.name %>
+      </p>
 
+      <p>
+        <b>Status:</b>
+        <%= @task.status %>
+      </p>
 
-<p>
-  <b>Name:</b>
-  <%= @task.name %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @task.status %>
-</p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+      <%= link_to 'Back', tasks_path %>
+    </div>
+  </body>
+</html>
