@@ -60,7 +60,7 @@ a.enter_button:hover{
 }
 
 #great_div{
-  font-family: Impact, Charcoal, sans-serif;
+  font-family: “Myriad Pro”, Arial, Helvetica, Tahoma, sans-serif;
   background-color:#fff;
   top:120px;
   position:relative;
@@ -106,7 +106,7 @@ a.enter_button:hover{
 }
 
 #footer2 {
-  font-family: Impact, Charcoal, sans-serif;
+  font-family: “Myriad Pro”, Arial, Helvetica, Tahoma, sans-serif;
   color:#fff;
   position:absolute;
   top:390px;
@@ -122,10 +122,11 @@ a.enter_button:hover{
 #footer3 {
   position:absolute;
   top:400px;
-  width:52%;
+  width:50%;
   text-align:right;
   left:50%;
   margin-left:-25%;
+  padding-left:20px;
 
 }
 

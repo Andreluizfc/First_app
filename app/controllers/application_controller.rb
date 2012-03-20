@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   #Method for authentication
   def auth
     authenticate_or_request_with_http_basic do |user, password|
-      user == 'admin' && password == 'rubyonrails'
+      user == 'admin' && password == 'rails'
     end
   end
 
