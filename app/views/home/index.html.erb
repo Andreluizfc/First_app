@@ -5,6 +5,9 @@
   <body>
    
    <!- Scripts for facebook and twitter ->
+
+   <!- Facebook Like ->
+
    <div id="fb-root"></div>
    <script>
      (function(d, s, id) {
@@ -17,14 +20,19 @@
      (document, 'script', 'facebook-jssdk'));
    </script>
 
+   <!- End of Facebook Like ->
+
+   <!- Tweet ->
+   
    <script>
-   !function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0];
-      if(!d.getElementById(id)){
-        js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
-      }
-   }(document,"script","twitter-wjs");
-   </script>    
+     !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+   </script>
+ 
+   <!- End of Tweet ->  
+
    <!- End of facebook and twitter scripts->
 
     <div id="header">
@@ -52,9 +60,8 @@
     <div class="fb-like" data-href="http://easytaskmanager.heroku.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
    </br>
    </br>
-   <a href="https://twitter.com/share" class="twitter-share-button"
-      data-url="http://easytaskmanager.heroku.com/">Tweet
-   </a>   
+   <a href="https://twitter.com/share" class="twitter-share-button" 
+   data-url="http://easytaskmanager.heroku.com/">Tweet</a>   
     </div>
     <!- End of social networks div->    
   </body>

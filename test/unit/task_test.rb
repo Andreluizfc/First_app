@@ -16,7 +16,7 @@ class TaskTest < ActiveSupport::TestCase
   
   #Tests if the name is too long
   test "name_too_long" do
-    task = create(:name => 'This task has a name too long')
+    task = create(:name => 'This task has a name too long and should not be created because this test is very effective')
     assert task.errors.invalid?(:name), ":name too long"
     assert_invalid task, "Task shouldn't be created"
   end
